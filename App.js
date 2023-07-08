@@ -1,32 +1,23 @@
-import { ScrollView, StyleSheet, Text, View } from "react-native";
-import styled from "styled-components/native";
+import { NavigationContainer } from "@react-navigation/native";
 
-const Try = styled.View`
-  padding: 10px;
-  height: 50px;
-  width: 50px;
-  background-color: red;
-  border-radius: 50%;
-`;
+import { COLORS } from "./src/constants";
+import Navigator from "./src/navigation/Navigator";
+import { View, StyleSheet, StatusBar } from "react-native";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Tesst</Text>
-      <Try />
+      <NavigationContainer>
+        <Navigator />
+      </NavigationContainer>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "#fdc",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  text: {
-    color: "green",
-    fontSize: 46,
+    height: "100%",
+    backgroundColor: COLORS.primary,
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
 });
