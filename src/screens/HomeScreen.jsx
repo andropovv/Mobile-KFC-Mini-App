@@ -1,10 +1,15 @@
 import React from "react";
 import { Text, View } from "react-native";
+import Header from "../components/Header";
+import FrenchFriesBunner from "../components/UI/FrenchFriesBunner";
+import ItemsList from "../components/ItemsList";
 
 const HomeScreen = () => {
   return (
     <View>
-      <Text style={{ fontSize: 50 }}>Homesdfasdf</Text>
+      <Header />
+      <FrenchFriesBunner />
+      <ItemsList />
     </View>
   );
 };

@@ -1,8 +1,14 @@
 import React from "react";
-import { View } from "react-native";
+import { View, Text } from "react-native";
+import Header from "../components/Header";
 
 const ItemScreen = () => {
-  return <View>ItemScreen</View>;
+  return (
+    <View>
+      <Header />
+      <Text>ItemScreen</Text>
+    </View>
+  );
 };
 
 export default ItemScreen;

@@ -1,8 +1,14 @@
 import React from "react";
-import { View } from "react-native";
+import { Text, View } from "react-native";
+import Header from "../components/Header";
 
 const CartScreen = () => {
-  return <View>CartScreen</View>;
+  return (
+    <View>
+      <Header />
+      <Text>CartScreen</Text>
+    </View>
+  );
 };
 
 export default CartScreen;
