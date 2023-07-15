@@ -1,26 +1,26 @@
 import React from "react";
-import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
-import AppIcon from "../assets/images/kfcIcon.png";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import ArrowIcon from "../assets/images/arrowLeft.png";
 import CartIcon from "../assets/images/cartIcon.png";
 import { useNavigation } from "@react-navigation/native";
 import ButtonWithImg from "./UI/ButtonWithImg";
+import { SIZES } from "../constants";
 
-const Header = () => {
+const HeaderForItem = () => {
   const navigation = useNavigation();
 
   const handlePressCart = () => {
     navigation.navigate("Cart");
   };
 
-  const handlePressHome = () => {
-    navigation.navigate("Home");
+  const handlePressBack = () => {
+    navigation.goBack();
   };
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.homeButton} onPress={handlePressHome}>
-        <Image source={AppIcon} style={styles.iconApp} />
-      </TouchableOpacity>
+      <ButtonWithImg onPress={handlePressBack} image={ArrowIcon} />
+      <Text style={styles.title}>Details</Text>
       <ButtonWithImg onPress={handlePressCart} image={CartIcon} />
     </View>
   );
@@ -36,15 +36,9 @@ const styles = StyleSheet.create({
     marginLeft: 25,
     marginRight: 25,
   },
-
-  iconApp: {
-    height: 80,
-    width: 80,
-  },
-  cartIcon: {
-    height: 40,
-    width: 40,
+  title: {
+    fontSize: SIZES.h3,
   },
 });
 
-export default Header;
+export default HeaderForItem;

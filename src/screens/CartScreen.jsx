@@ -6,7 +6,7 @@ const CartScreen = () => {
   return (
     <View>
       <Header />
-      <Text>CartScreen</Text>
+      <Text>sdfjisdfnjosdn</Text>
     </View>
   );
 };

@@ -1,17 +1,24 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 import Header from "../components/Header";
 import FrenchFriesBunner from "../components/UI/FrenchFriesBunner";
 import ItemsList from "../components/ItemsList";
+import { COLORS } from "../constants";
 
 const HomeScreen = () => {
   return (
-    <View>
+    <ScrollView style={styles.container}>
       <Header />
       <FrenchFriesBunner />
       <ItemsList />
-    </View>
+    </ScrollView>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: COLORS.primary,
+  },
+});
 
 export default HomeScreen;

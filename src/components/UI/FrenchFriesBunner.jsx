@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.secondary,
     alignItems: "center",
     justifyContent: "space-around",
+    marginBottom: 30,
   },
   icon: {
     width: 100,
