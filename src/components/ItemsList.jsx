@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, Text } from "react-native";
 
 import { View } from "react-native";
@@ -7,12 +7,34 @@ import itemsList from "../ItemsList";
 import { SIZES } from "../constants";
 
 const ItemsList = () => {
+  const [items, setItems] = useState(itemsList);
+
+  const handleIncreaseItem = (id) => {
+    setItems(
+      items.map((i) =>
+        id === i.id ? { ...i, countInCart: i.countInCart + 1 } : i
+      )
+    );
+  };
+
+  const handleDecreaseItem = (id) => {
+    setItems(
+      items.map((i) =>
+        id === i.id ? { ...i, countInCart: i.countInCart - 1 } : i
+      )
+    );
+  };
   return (
     <View style={styles.constainer}>
       <Text style={styles.title}>Most popular</Text>
       <View style={styles.list}>
-        {itemsList.map((i) => (
-          <Item key={i} item={i} />
+        {items.map((i) => (
+          <Item
+            key={i.id}
+            item={i}
+            onIncrease={handleIncreaseItem}
+            onDecrease={handleDecreaseItem}
+          />
         ))}
       </View>
     </View>

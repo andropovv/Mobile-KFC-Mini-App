@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import ArrowIcon from "../assets/images/arrowLeft.png";
 import CartIcon from "../assets/images/cartIcon.png";
 import { useNavigation } from "@react-navigation/native";
@@ -9,10 +9,6 @@ import { SIZES } from "../constants";
 const HeaderForItem = () => {
   const navigation = useNavigation();
 
-  const handlePressCart = () => {
-    navigation.navigate("Cart");
-  };
-
   const handlePressBack = () => {
     navigation.goBack();
   };
@@ -21,7 +17,7 @@ const HeaderForItem = () => {
     <View style={styles.container}>
       <ButtonWithImg onPress={handlePressBack} image={ArrowIcon} />
       <Text style={styles.title}>Details</Text>
-      <ButtonWithImg onPress={handlePressCart} image={CartIcon} />
+      <ButtonWithImg image={CartIcon} onPress={() => {}} />
     </View>
   );
 };

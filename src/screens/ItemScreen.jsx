@@ -15,6 +15,14 @@ import CartAddIcon from "../assets/images/cartAdd.png";
 
 const ItemScreen = ({ route }) => {
   const { item } = route.params;
+
+  const handleIncrease = () => {
+    onIncrease(item.id);
+  };
+
+  const handleDecrease = () => {
+    onDecrease(item.id);
+  };
   return (
     <View>
       <HeaderForItem />
@@ -36,12 +44,30 @@ const ItemScreen = ({ route }) => {
         <Text style={styles.descriptionTitle}>Description</Text>
         <Text style={styles.description}>{item.description}</Text>
       </View>
-      <TouchableOpacity style={styles.cartAdding}>
-        <Text style={styles.cost}>${item.cost}</Text>
-        <View style={styles.cartButton}>
-          <Image source={CartAddIcon} style={styles.addingImage} />
+      {item.countInCart === 0 ? (
+        <TouchableOpacity style={styles.cartAdding}>
+          <Text style={styles.cost}>${item.cost}</Text>
+          <View style={styles.cartButton}>
+            <Image source={CartAddIcon} style={styles.addingImage} />
+          </View>
+        </TouchableOpacity>
+      ) : (
+        <View style={styles.cartAdding}>
+          <TouchableOpacity
+            style={styles.decreaseButton}
+            onPress={handleDecrease}
+          >
+            <Text style={styles.changeCount}>-</Text>
+          </TouchableOpacity>
+          <Text style={styles.countInCart}>{item.countInCart}</Text>
+          <TouchableOpacity
+            style={styles.increaseButton}
+            onPress={handleIncrease}
+          >
+            <Text style={styles.changeCount}>+</Text>
+          </TouchableOpacity>
         </View>
-      </TouchableOpacity>
+      )}
     </View>
   );
 };

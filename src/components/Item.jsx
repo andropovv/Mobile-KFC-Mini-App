@@ -4,13 +4,21 @@ import { COLORS, SIZES } from "../constants";
 import CartAddIcon from "../assets/images/cartAdd.png";
 import { useNavigation } from "@react-navigation/native";
 
-const Item = ({ item }) => {
+const Item = ({ item, onIncrease, onDecrease }) => {
   const navigation = useNavigation();
 
   const handleOpenItem = () => {
     navigation.navigate("Item", {
       item,
     });
+  };
+
+  const handleIncrease = () => {
+    onIncrease(item.id);
+  };
+
+  const handleDecrease = () => {
+    onDecrease(item.id);
   };
 
   return (
@@ -21,12 +29,30 @@ const Item = ({ item }) => {
       <View style={styles.imageContainer}>
         <Image source={item.image} style={styles.itemIcon} />
       </View>
-      <TouchableOpacity style={styles.cartAdding}>
-        <Text style={styles.cost}>${item.cost}</Text>
-        <View style={styles.cartButton}>
-          <Image source={CartAddIcon} style={styles.addingImage} />
+      {item.countInCart === 0 ? (
+        <TouchableOpacity style={styles.cartAdding} onPress={handleIncrease}>
+          <Text style={styles.cost}>${item.cost}</Text>
+          <View style={styles.cartButton}>
+            <Image source={CartAddIcon} style={styles.addingImage} />
+          </View>
+        </TouchableOpacity>
+      ) : (
+        <View style={styles.cartAdding}>
+          <TouchableOpacity
+            style={styles.decreaseButton}
+            onPress={handleDecrease}
+          >
+            <Text style={styles.changeCount}>-</Text>
+          </TouchableOpacity>
+          <Text style={styles.countInCart}>{item.countInCart}</Text>
+          <TouchableOpacity
+            style={styles.increaseButton}
+            onPress={handleIncrease}
+          >
+            <Text style={styles.changeCount}>+</Text>
+          </TouchableOpacity>
         </View>
-      </TouchableOpacity>
+      )}
     </TouchableOpacity>
   );
 };
@@ -85,6 +111,31 @@ const styles = StyleSheet.create({
   addingImage: {
     height: 25,
     width: 25,
+  },
+  countInCart: {
+    color: "white",
+  },
+  changeCount: {
+    color: "white",
+    fontSize: SIZES.body2,
+  },
+  increaseButton: {
+    backgroundColor: "green",
+    margin: 10,
+    borderRadius: 10,
+    alignItems: "center",
+    justifyContent: "center",
+    height: 30,
+    width: 30,
+  },
+  decreaseButton: {
+    backgroundColor: "red",
+    margin: 10,
+    borderRadius: 10,
+    alignItems: "center",
+    justifyContent: "center",
+    height: 30,
+    width: 30,
   },
 });
 

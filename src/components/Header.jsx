@@ -8,10 +8,6 @@ import ButtonWithImg from "./UI/ButtonWithImg";
 const Header = () => {
   const navigation = useNavigation();
 
-  const handlePressCart = () => {
-    navigation.navigate("Cart");
-  };
-
   const handlePressHome = () => {
     navigation.navigate("Home");
   };
@@ -21,7 +17,7 @@ const Header = () => {
       <TouchableOpacity style={styles.homeButton} onPress={handlePressHome}>
         <Image source={AppIcon} style={styles.iconApp} />
       </TouchableOpacity>
-      <ButtonWithImg onPress={handlePressCart} image={CartIcon} />
+      <ButtonWithImg image={CartIcon} onPress={() => {}} />
     </View>
   );
 };
