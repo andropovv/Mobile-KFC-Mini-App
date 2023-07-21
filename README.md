@@ -1,4 +1,5 @@
-# Mobile-KFC-Mini-App
-This is a mini copy of the KFC mobile application on React Native
+# Mobile KFC test app
 
-The application is currently being developed...
+This is a mini copy of the KFC mobile application on React Native. Just the first test application.
+
+App in npm: https://www.npmjs.com/package/mobilekfc
